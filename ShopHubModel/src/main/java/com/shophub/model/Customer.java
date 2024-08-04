@@ -30,7 +30,7 @@ public class Customer {
 
     @Enumerated(EnumType.STRING) // Persist gender as enum name
     @Column(name = "GENDER")
-    private String gender;
+    private Gender gender;
 
     @Column(name = "PASSWORD")
     private String password;
