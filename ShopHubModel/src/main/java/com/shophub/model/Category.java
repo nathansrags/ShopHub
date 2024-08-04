@@ -11,26 +11,22 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "address", schema = "ShopHub")
+@Table(name = "category", schema = "ShopHub")
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Address implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "address_id")
-    private Long id;
+public class Category implements Serializable {
 
-    @Column(name = "door_no")
-    private String doorNo;
-    @Column(name = "street_name")
-    private String streetName;
-    @Column(name = "layout")
-    private String layout;
-    @Column(name = "city")
-    private String city;
-    @Column(name = "pin_code")
-    private String pinCode;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "category_id")
+    private Long categoryId;
+
+    @Column(name = "category_name")
+    private String categoryName;
+
+    @Column(name = "description")
+    private String categoryDesc;
 
     @CreationTimestamp
     @Column(name = "created_date", nullable = false, updatable = false)
@@ -40,5 +36,4 @@ public class Address implements Serializable {
     @Column(name = "updated_date", nullable = false, updatable = false)
     private Timestamp updatedDate;
 
-    // Getters and setters
 }

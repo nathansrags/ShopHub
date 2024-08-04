@@ -3,8 +3,11 @@ package com.shophub.model;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "CUSTOMERS", schema = "ShopHub")
@@ -42,6 +45,14 @@ public class Customer {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address shippingAddress;
+
+    @CreationTimestamp
+    @Column(name = "created_date", nullable = false, updatable = false)
+    private Timestamp createdDate;
+
+    @UpdateTimestamp
+    @Column(name = "updated_date", nullable = false, updatable = false)
+    private Timestamp updatedDate;
 
     // Constructors, getters, setters, and other methods
     // ...

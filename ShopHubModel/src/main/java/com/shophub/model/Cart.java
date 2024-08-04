@@ -3,9 +3,12 @@ package com.shophub.model;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
@@ -20,6 +23,14 @@ public class Cart implements Serializable {
     private Long cartId;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<CartItem> cartItems;
+    private Set<LineItem> lineItems;
+
+    @CreationTimestamp
+    @Column(name = "created_date", nullable = false, updatable = false)
+    private Timestamp createdDate;
+
+    @UpdateTimestamp
+    @Column(name = "updated_date", nullable = false, updatable = false)
+    private Timestamp updatedDate;
 
 }
