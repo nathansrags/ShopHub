@@ -1,5 +1,6 @@
 package com.shophub.model;
 
+import com.shophub.model.constants.DBConstants;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +13,7 @@ import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
-@Table(name = "carts", schema = "ShopHub")
+@Table(name = "carts", schema = DBConstants.SCHEMA)
 @Getter
 @Setter
 @EqualsAndHashCode
