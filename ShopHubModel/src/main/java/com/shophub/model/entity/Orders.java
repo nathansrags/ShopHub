@@ -11,11 +11,11 @@ import java.sql.Timestamp;
 import java.util.Set;
 
 @Entity
-@Table(name = "order", schema = "ShopHub")
+@Table(name = "orders", schema = "ShopHub")
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Order {
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
