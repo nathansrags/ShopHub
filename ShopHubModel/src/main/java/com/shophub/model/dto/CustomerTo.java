@@ -3,14 +3,17 @@ package com.shophub.model.dto;
 import com.shophub.model.entity.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerTo implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class CustomerTo extends UserTo implements Serializable {
 
     private Long customerId;
     private String firstName;
