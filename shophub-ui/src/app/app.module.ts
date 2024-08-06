@@ -8,7 +8,6 @@ import { MaterialModule } from 'src/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgxSpinnerModule } from 'ngx-spinner';
 import { AuthGuard } from './interceptors/authguard.interceptor';
 import { Authinterceptor } from './interceptors/authinterceptor.interceptor';
 
@@ -19,7 +18,7 @@ import { Authinterceptor } from './interceptors/authinterceptor.interceptor';
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule, 
-    AppRoutingModule, NgxSpinnerModule,
+    AppRoutingModule,
     FormsModule, HttpClientModule, MaterialModule
   ],
   providers: [Title, HttpClientModule, AuthGuard, {
