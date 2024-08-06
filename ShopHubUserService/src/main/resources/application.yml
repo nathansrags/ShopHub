@@ -1,7 +1,7 @@
 server:
   port: 9092
   servlet:
-    context-path: /customer
+    context-path: /authenticate
 spring:
   application:
     name: CUSTOMER-API
@@ -13,4 +13,9 @@ eureka:
       fetch-registry: true
   instance:
     prefer-ip-address: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health, info"
 
