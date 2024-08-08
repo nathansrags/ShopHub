@@ -14,7 +14,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "health, info"
+        include: "health, info"      
 spring:
   cloud:
     gateway:
@@ -34,4 +34,12 @@ spring:
         - id: ShopHubBackend
           uri: lb://SHOPHUB-API
           predicates:
-            - Path=/shophub/**
+            - Path=/shophub/**					
+      default-filters:
+      -  DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+              allowedHeaders: "*"

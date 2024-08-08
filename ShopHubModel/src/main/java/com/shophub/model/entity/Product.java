@@ -1,5 +1,6 @@
 package com.shophub.model.entity;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,6 +14,7 @@ import java.sql.Timestamp;
 @Table(name = "products")
 @Getter
 @Setter
+@EqualsAndHashCode
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,22 +40,5 @@ public class Product {
     @UpdateTimestamp
     @Column(name = "updated_date", nullable = false, updatable = false)
     private Timestamp updatedDate;
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Product product)) {
-            return false;
-        }
-        return productId != null && productId.equals(product.getProductId());
-    }
-
-    @Override
-    public int hashCode(){
-        return getClass().hashCode();
-    }
-
 
 }
