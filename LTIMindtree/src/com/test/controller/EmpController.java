@@ -1,2 +1,5 @@
-package com.test.controller;public class EmpController {
+package com.test.controller;
+
+@Rest
+public class EmpController {
 }

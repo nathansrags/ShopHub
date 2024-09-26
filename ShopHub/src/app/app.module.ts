@@ -1,40 +1,42 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { MaterialModule } from 'src/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AuthGuard } from './interceptors/authguard.interceptor';
-import { Authinterceptor } from './interceptors/authinterceptor.interceptor';
-import { RegisterComponent } from './login/register/register.component';
-import { RecoveryComponent } from './login/recovery/recovery.component';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, provideHttpClient } from '@angular/common/http';
+
+
 import { MatchPasswordDirective } from './directives/matchpassword.directive';
 import { PasswordpatternDirective } from './directives/passwordpattern.directive';
+import { Authinterceptor } from './interceptors/authinterceptor.interceptor';
+import { AuthGuard } from './interceptors/authguard.interceptor';
+import { MaterialModule } from './material/material.module';
+import { AppRoutingModule } from './app.routes';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { DirectiveModule } from './directive.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    RecoveryComponent,
-    MatchPasswordDirective,
-    PasswordpatternDirective
+  declarations: [   
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
+    CommonModule, // add here if necessasry
+    RouterLinkActive,// add here if necessasry
+    RouterOutlet, // add here if necessasry
+    RouterLink,// add here if necessasry
+    AppRoutingModule,
     AppRoutingModule, NgxSpinnerModule,
-    FormsModule, HttpClientModule, MaterialModule
+    FormsModule,  MaterialModule, DirectiveModule
   ],
-  providers: [Title, HttpClientModule, AuthGuard, {
+  exports: [],
+  providers: [Title, provideHttpClient(), AuthGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: Authinterceptor,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }

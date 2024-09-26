@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-3">
+        <i class="fa fa-fw  fa-heart-o" aria-hidden="true"></i>
+        <a class="user-panel-link" href="#" title="Whislist" role="button">Whislist</a>
+    </div>
+    <div class="col-md-3">
+        <i class="fa fa-fw  fa-user-circle-o" aria-hidden="true">
+            <a *ngIf="!isLoggedIn" class="user-panel-link" routerLink="/login" title="Login" role="button">Login</a>
+
+        </i>
+
+        <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="menu" class="login-font">
+            <div>
+                <a routerLink="/login" class="user-panel-link" href="#" title="{{username}}"
+                    role="button">{{username}}</a>
+            </div>
+        </button>
+        <mat-menu #menu>
+            <button mat-menu-item routerLink="/userprofile"> User Profile</button>
+            <button mat-menu-item routerLink="/notification"> Notification</button>
+            <button mat-menu-item routerLink="/logout">Logout</button>
+        </mat-menu>
+        <!-- <a routerLink="/login" class="user-panel-link" href="#" title="Login" role="button">Login</a> &nbsp; & -->
+        <!-- <a routerLink="/register" class="user-panel-link" href="#" title="Sign Up" role="button">&nbsp;Sign up</a> -->
+    </div>
+    <div class="col-md-3">
+        <i class="fa fa-fw  fa-shopping-cart" aria-hidden="true"></i>
+        <a routerLink="/viewcart" class="user-panel-link" href="#" title="Cart" role="button">Cart
+            <span class="notification-theme top-0 start-100 translate-middle badge rounded-pill">{{cartTotal}}</span>
+        </a>
+    </div>
+</div>

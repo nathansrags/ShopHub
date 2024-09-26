@@ -1,0 +1,37 @@
+[
+    {
+      "id": 1,
+      "name": "Top Offers",
+      "url": "http://localhost:9090/images/photos/soffer.png"
+    },
+    {
+      "id": 2,
+      "name": "Electronics",
+      "url": "http://localhost:9090/images/photos/electronics.png"
+    },
+    {
+      "id": 3,
+      "name": "Fashion",
+      "url": "http://localhost:9090/images/photos/fashion.png"
+    },
+    {
+      "id": 4,
+      "name": "Beauty",
+      "url": "http://localhost:9090/images/photos/cosmetics.png"
+    },
+    {
+      "id": 5,
+      "name": "Kitchen",
+      "url": "http://localhost:9090/images/photos/kitchen.png"
+    },
+    {
+      "id": 6,
+      "name": "Travel",
+      "url": "http://localhost:9090/images/photos/travel.png"
+    },
+    {
+      "id": 7,
+      "name": "Groceries",
+      "url": "http://localhost:9090/images/photos/groceries.png"
+    }
+  ]

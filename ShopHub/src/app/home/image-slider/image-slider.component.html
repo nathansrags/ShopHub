@@ -1,0 +1,22 @@
+<div class="slides">
+    <div class="slide" [ngStyle]="{
+        'background-image': 'url(' + slides[currentSlide].url + ')',
+        opacity: hidden ? 0 : 1,
+        transition: 'opacity ' + animationSpeed + 'ms ease-in-out' 
+      }" loading="eager" alt="Image"></div>
+
+    @if (indicatorsVisible) {
+    <div id="indicators">
+        @for(slide of slides; track $index; ){
+        <div (click)="jumpToSlide($index)" class="indicator" [ngClass]="{ active: $index == currentSlide }"></div>
+        }
+    </div>
+    }
+
+    <button (click)="next()" class="nextButton float-end">
+        <i class="fa fa-arrow-right"></i>
+    </button>
+    <button (click)="previous()" class="previousButton float-start">
+        <i class="fa fa-arrow-left"></i>
+    </button>
+</div>

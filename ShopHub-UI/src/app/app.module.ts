@@ -1,0 +1,40 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule, Title } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { MaterialModule } from 'src/material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './interceptors/authguard.interceptor';
+import { Authinterceptor } from './interceptors/authinterceptor.interceptor';
+import { RegisterComponent } from './login/register/register.component';
+import { RecoveryComponent } from './login/recovery/recovery.component';
+import { MatchPasswordDirective } from './directives/matchpassword.directive';
+import { PasswordpatternDirective } from './directives/passwordpattern.directive';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    RecoveryComponent,
+    MatchPasswordDirective,
+    PasswordpatternDirective
+  ],
+  imports: [
+    BrowserModule, BrowserAnimationsModule,
+    AppRoutingModule, NgxSpinnerModule,
+    FormsModule, HttpClientModule, MaterialModule
+  ],
+  providers: [Title, HttpClientModule, AuthGuard, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: Authinterceptor,
+    multi: true
+  }],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerDao extends JpaRepository<Customer, Long> {
 
-    @Query("select cc from Customer cc where cc.email =?1")
+     @Query("select cc from Customer cc where cc.email =?1")
     Customer findByUsernameOrEmail(final String email);
     Boolean existsByEmail(String email);
 }

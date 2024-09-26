@@ -1,0 +1,38 @@
+.top-banner {
+    min-height: 126px;
+}
+
+.categories {
+    justify-content: center;
+}
+
+.fashion-logo {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.bd-highlight {
+    font-weight: bold;
+}
+
+.app-fluid {
+    display: flex;
+    justify-content: center;
+    margin: 0 16px;
+}
+
+.boxing {
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgb(0, 0, 0, .08);
+    background-color: rgb(256, 256, 256);
+    align-items: center;
+}
+
+.category-image {
+    width: 64px;
+    background: linear-gradient(to bottom, white, #1976d2);
+    border-radius: 0.5rem;
+    opacity: 1;
+    background-size: cover;
+    box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, .8);
+}

@@ -1,6 +1,7 @@
 package com.shophub.model.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -45,6 +46,7 @@ public class SecurityConfig {
         return httpSecurity.csrf().disable().authorizeHttpRequests().antMatchers(AUTH_WHITELIST).permitAll()
                 .and().authorizeHttpRequests().and().build();
     }
+
 
     @Bean
     DaoAuthenticationProvider authProvider() {

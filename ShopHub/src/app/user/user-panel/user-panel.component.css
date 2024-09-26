@@ -1,0 +1,10 @@
+.user-panel-link{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}
+.login-font{
+    font-size: 18px;
+    font-weight: 600;
+}

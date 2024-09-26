@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Top Offers",
+        "url": "https://rukminim1.flixcart.com/fk-p-flap/1600/270/image/c71214dd5d01be5c.jpg?q=20"
+    },
+    {
+        "id": 2,
+        "name": "Electronics",
+        "url": "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/44e10b16e649b691.jpg?q=100"
+    },
+    {
+        "id": 3,
+        "name": "Fashion",
+        "url": "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/4da1d0d19350cc84.jpg?q=100>"
+    },
+    {
+        "id": 4,
+        "name": "Beauty",
+        "url": "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/a5e656672d0548dd.jpg?q=100>"
+    },
+    {
+        "id": 5,
+        "name": "Home & Kitchen",
+        "url": "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/5b813b64a3179898.jpg?q=100>"
+    },
+    {
+        "id": 6,
+        "name": "Travel",
+        "url": "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/57fe1ffe54569c41.jpg?q=100>"
+    },
+    {
+        "id": 7,
+        "name": "Groceries",
+        "url": "https://rukminim2.flixcart.com/fk-p-flap/64/64/image/25f400c36bc3487d.jpg?q=100>"
+    }
+]

@@ -34,7 +34,11 @@ spring:
         - id: ShopHubBackend
           uri: lb://SHOPHUB-API
           predicates:
-            - Path=/shophub/**					
+            - Path=/shophub/**
+        - id: ImageService
+          uri: lb://IMAGESERVICE
+          predicates:
+            - Path=/images/**
       default-filters:
       -  DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:
