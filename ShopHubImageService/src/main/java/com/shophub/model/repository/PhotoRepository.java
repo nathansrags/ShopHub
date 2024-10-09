@@ -10,6 +10,7 @@ public interface PhotoRepository extends MongoRepository<Photo, String>{
 	
 	
 	Optional<Photo> findByName(String name);
-	
 
+
+	Optional<Photo> findByUrl(String url);
 }

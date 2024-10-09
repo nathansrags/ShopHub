@@ -1,9 +1,12 @@
 package com.shophub.model.config;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.ByteArrayOutputStream;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
+@Slf4j
 public class ImageUtil {
 
 	public static byte[] compressImage(byte[] data) {
@@ -22,6 +25,7 @@ public class ImageUtil {
 		try {
 			outputStream.close();
 		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
 		}
 		return outputStream.toByteArray();
 	}

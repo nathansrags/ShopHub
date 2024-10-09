@@ -34,10 +34,10 @@ public class Photo {
 	private String type;
 	@Field
 	@NotNull
-	private String screen;
+	private String url;
 	@Field
 	@NotNull
-	private String component;
+	private String category;
 	@Field
 	@NotNull
 	private Binary image;

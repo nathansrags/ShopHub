@@ -1,5 +1,6 @@
 package com.shophub.model.to;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
@@ -14,7 +15,9 @@ import lombok.NoArgsConstructor;
 public class ImageRequestTo {
 	
 	String title;
-	String screen;
+	String category;
+	@JsonIgnore
+	String url;
 	String component;
 	MultipartFile image;
 	

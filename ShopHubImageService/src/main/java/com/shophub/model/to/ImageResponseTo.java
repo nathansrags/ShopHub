@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ImageResponseTo {
 	
-	private String statusCode;
+	private int statusCode;
 	private String message;
 	private Object data;
 
