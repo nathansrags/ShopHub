@@ -67,7 +67,7 @@ export class AuthService {
     return this._loginUserId$;
   }
 
-  public getLoginCred(){
+  public getLoginCred() {
     let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE);
     let cred !: string;
     if (user != null) {
@@ -93,7 +93,7 @@ export class AuthService {
 
   private _loginServer = auth_server.url + '/login';
 
-  public login(creds : Customer){
+  public login(creds: Customer) {
     this._loginSuccess$.next(false);
     return this.httpClient.post<ApiResponse>(this._loginServer, creds);
   }

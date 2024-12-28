@@ -8,7 +8,6 @@ import com.shophub.model.to.ImageResponseTo;
 import com.shophub.model.to.PhotoTo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.http.HttpStatus;
 import org.bson.BsonBinarySubType;
 import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,14 +46,15 @@ public class PhotoService {
 
     public byte[] getPhoto(final String url) {
         Optional<Photo> image = photoRepository.findByUrl(url);
-        return image.map(o-> o.getImage().getData()).orElseThrow(RuntimeException::new);
+        return image.map(o -> o.getImage().getData()).orElseThrow(RuntimeException::new);
     }
 
-    public List<byte[]> getPhotos() {
-        List<byte[]> photoList = new ArrayList<>();
+    public List<ImageResponseTo> getPhotos() {
+        List<ImageResponseTo> photoList = new ArrayList<>();
         List<Photo> images = photoRepository.findAll();
         for (Photo image : images) {
-            photoList.add(ImageUtil.decompressImage(image.getImage().getData()));
+            var res = ImageResponseTo.builder().data(ImageUtil.decompressImage(image.getImage().getData())).build();
+            photoList.add(res);
         }
         return photoList;
     }
@@ -64,32 +64,38 @@ public class PhotoService {
         List<Photo> images = photoRepository.findAll();
         for (Photo image : images) {
             PhotoTo to = PhotoTo.builder().id(image.getId()).name(image.getName()).type(image.getType())
-                    .title(image.getTitle()).build();
+                    .title(image.getTitle()).url(image.getUrl()).category(image.getCategory())
+                    .image(image.getImage().getData()).build();
             photoList.add(to);
         }
         return photoList;
     }
 
     @Transactional
-    public ImageResponseTo uploadImageFromUrl(String link) {
+    public ImageResponseTo uploadImageFromUrl(String path) {
         try {
-            String path = link;
-            //URLDecoder.decode(link, StandardCharsets.UTF_8);
+            String[] splitString = path.split("images/");
+            log.info(splitString[0]);
+            String[] allPath = splitString[1].split("/");
+            log.info(allPath[0]);
+            String category = allPath[0];
+            String product = allPath[1];
+            log.info(splitString + " == " + allPath + "=="+category, " --" + product + " -- ");
             URL url = new URL(path);
             byte[] image = convertImageToBytes(url);
             assert image != null;
             log.info(String.valueOf(image.length));
             Binary binary = new Binary(BsonBinarySubType.BINARY, image);
             String fileName = FilenameUtils.getName(path);
-            photoRepository.save(Photo.builder().name(fileName).title(fileName)
-                    .type(FilenameUtils.getExtension(path)).url(link).category(fileName).image(binary).build());
-            log.info("Image uploaded from URL {}", link);
+            photoRepository.save(Photo.builder().name(fileName).title(fileName).product(product)
+                    .type(FilenameUtils.getExtension(path)).url(path).category(category).image(binary).build());
+            log.info("Image uploaded from URL {}", path);
             return ImageResponseTo.builder().message("Image uploaded successfully: " + fileName)
-                    .statusCode(HttpStatus.SC_OK).build();
+                    .build();
         } catch (Exception e) {
             log.error("Error in image upload");
             return ImageResponseTo.builder().message(e.getLocalizedMessage())
-                    .statusCode(HttpStatus.SC_OK).build();
+                    .build();
         }
     }
 

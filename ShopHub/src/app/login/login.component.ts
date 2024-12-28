@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   loginMessage!: string;
   errorMessage!: string;
   show: boolean = false;
-  profile: Customer = new Customer;
+  profile!: Customer ;
   apiResponse !: ApiResponse;
 
   ngOnInit(): void {
@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     debugger;
+    this.profile = new Customer();
     this.profile.email = this.form.email;
     this.profile.password = this.form.password;
     return this.authenticate(this.profile);

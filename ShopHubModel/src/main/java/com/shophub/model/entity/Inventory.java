@@ -1,5 +1,6 @@
 package com.shophub.model.entity;
 
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @EqualsAndHashCode
+@Builder
 public class Inventory implements Serializable {
 
     @Id
@@ -26,7 +28,7 @@ public class Inventory implements Serializable {
     private Long productId;
 
     @Column(name ="quantity")
-    private int quantity;
+    private Long quantity;
 
     @CreationTimestamp
     @Column(name = "created_date", nullable = false, updatable = false)

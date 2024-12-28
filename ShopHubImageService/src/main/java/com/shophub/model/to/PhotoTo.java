@@ -14,4 +14,7 @@ public class PhotoTo {
 	private String title;
 	private String name;
 	private String type;
+	private String url;
+	private String category;
+	private byte[] image;
 }

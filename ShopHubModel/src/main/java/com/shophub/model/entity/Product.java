@@ -1,5 +1,6 @@
 package com.shophub.model.entity;
 
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @EqualsAndHashCode
+@Builder
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +33,7 @@ public class Product {
     private String description;
 
     @Column(name = "discount_price")
-    private String discountPrice;
+    private BigDecimal discountPrice;
 
     @CreationTimestamp
     @Column(name = "created_date", nullable = false, updatable = false)

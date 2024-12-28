@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { DirectiveModule } from '../../directive.module';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router, RouterModule } from '@angular/router';
+import { Customer } from '../../model/user.model';
 
 @Component({
   selector: 'app-recover',
@@ -13,16 +14,22 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './recover.component.css'
 })
 export class RecoverComponent {
-  constructor(private spinner: NgxSpinnerService,private _location:Location, private router: Router) { }
+  constructor(private spinner: NgxSpinnerService, private _location: Location, private router: Router) { }
   successMessage!: string;
   errorMessage!: string;
-  form= new  RecoveryForm();
+  form = new RecoveryForm();
   show: boolean = false;
-  showC: boolean = false;  
+  showC: boolean = false;
   ngOnInit(): void {
   }
 
-  onSubmit() { }
+  onSubmit() {
+    let profile: Customer = new Customer;
+    profile.email = this.form.email;
+    profile.password = this.form.password;
+    console.log(profile);
+
+  }
 
 
   togglePassword(filed: string) {
@@ -33,7 +40,7 @@ export class RecoverComponent {
     }
   }
 
-  goBack(){
+  goBack() {
     this.errorMessage = '';
     this._location.back();
   }
@@ -41,8 +48,8 @@ export class RecoverComponent {
 }
 
 export class RecoveryForm {
-  email: string ='';
-  password: string= '';
-  confirmpassword: string= '';
+  email: string = '';
+  password: string = '';
+  confirmpassword: string = '';
 }
 
