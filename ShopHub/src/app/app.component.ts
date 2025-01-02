@@ -9,7 +9,7 @@ import { MaterialModule } from './material/material.module';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, AdminMenuComponent, RouterLink, RouterLinkActive, UserPanelComponent, MaterialModule],
+  imports: [RouterOutlet, CommonModule, AdminMenuComponent, UserPanelComponent, MaterialModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -21,7 +21,11 @@ export class AppComponent {
   loggedInUsername !:string;
 
   constructor(private router:Router, private authService: AuthService){
+    this.authService.getLoggedInName.subscribe(name => this.changeName(name));
+  }
 
+  private changeName(name: string): void {
+      this.loggedInUsername = name;  
   }
 
   onSearch(){}

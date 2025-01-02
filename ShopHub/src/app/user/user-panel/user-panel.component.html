@@ -6,13 +6,11 @@
     <div class="col-md-3">
         <i class="fa fa-fw  fa-user-circle-o" aria-hidden="true">
             <a *ngIf="!isLoggedIn" class="user-panel-link" routerLink="/login" title="Login" role="button">Login</a>
-
         </i>
-
         <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="menu" class="login-font">
             <div>
-                <a routerLink="/login" class="user-panel-link" href="#" title="{{username}}"
-                    role="button">{{username}}</a>
+                <div class="user-panel-link" href="#" title="{{username}}"
+                    role="button">{{username}}</div>
             </div>
         </button>
         <mat-menu #menu>
