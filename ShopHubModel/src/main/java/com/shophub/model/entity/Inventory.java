@@ -1,9 +1,6 @@
 package com.shophub.model.entity;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,6 +14,8 @@ import java.sql.Timestamp;
 @Setter
 @EqualsAndHashCode
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Inventory implements Serializable {
 
     @Id
@@ -24,10 +23,7 @@ public class Inventory implements Serializable {
     @Column(name = "id")
     private Long inventoryId;
 
-    @Column(name = "product_id")
-    private Long productId;
-
-    @Column(name ="quantity")
+    @Column(name = "quantity")
     private Long quantity;
 
     @CreationTimestamp

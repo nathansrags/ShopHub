@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
       console.log(response);
       this.apiResponse = response;
       this.profile = response.data as Customer;
-      if (this.apiResponse.statusCode == "200") {
+      if (this.apiResponse.statusCode == "OK") {
         this.authService.registrationSuccessfullLogin(this.profile);
         this.authService.setUserProfile(this.apiResponse.data as Customer);
         this.authService.setUserId(this.apiResponse.data as Customer);
@@ -98,6 +98,6 @@ export class LoginComponent implements OnInit {
 }
 
 export class LoginForm {
-  email!: string;
-  password!: string;
+  email: string = "nathan@email.com";
+  password: string = "Chennai@123";
 }

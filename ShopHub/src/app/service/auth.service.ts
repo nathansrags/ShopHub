@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { ApiResponse } from '../model/ApiResponse';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Customer } from '../model/user.model';
@@ -19,6 +19,8 @@ export class AuthService {
   private _loginUserId$ = new BehaviorSubject<number>(0);
   profile = new Customer;
   private _loginProfile$ = new BehaviorSubject<Customer>(this.profile);
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
+
 
   USER_NAME_SESSION_ATTRIBUTE = 'authenticatedUser'
   public get loginSuccess(): Observable<boolean> {
@@ -53,7 +55,7 @@ export class AuthService {
     let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE);
     if (user != null) {
       let p: Customer = JSON.parse(user);
-      this._loginUserName$.next(p.firstName + '' + p.lastName);
+      this._loginUserName$.next(p.firstName);
     }
     return this._loginUserName$;
   }
@@ -87,6 +89,7 @@ export class AuthService {
 
   setUserId(profile: Customer) {
     if (profile != null) {
+      this.getLoggedInName.emit(profile.firstName);
       this._loginUserId$.next(Number(profile.customerId));
     }
   }

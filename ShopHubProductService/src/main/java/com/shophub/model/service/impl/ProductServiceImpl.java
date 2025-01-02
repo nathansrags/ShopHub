@@ -6,46 +6,59 @@ import com.shophub.model.entity.Product;
 import com.shophub.model.exception.ProductServiceCustomException;
 import com.shophub.model.payload.ProductRequest;
 import com.shophub.model.payload.ProductResponse;
-import com.shophub.model.repository.InventoryRepository;
-import com.shophub.model.repository.ProductRepository;
+import com.shophub.model.repository.InventoryDao;
+import com.shophub.model.repository.ProductDao;
 import com.shophub.model.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static org.springframework.beans.BeanUtils.copyProperties;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Log4j2
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService<ProductRequest, ProductResponse> {
 
     @Autowired
-    private final ProductRepository productRepository;
+    private final ProductDao productRepository;
     @Autowired
-    private final InventoryRepository inventoryRepository;
+    private final InventoryDao inventoryRepository;
+    @Autowired
+    private ModelMapper mapper;
 
 
     @Override
-    public long addProduct(ProductRequest productRequest) {
-        log.info("ProductServiceImpl | addProduct is called");
+    public List<ProductResponse> getProducts() {
+        List<Product> dbList = productRepository.findAll();
+        final List<ProductResponse> response = new ArrayList<>();
+        for (Product db : dbList) {
+            ProductResponse productResponse = convertToDto(db);
+            response.add(productResponse);
+        }
+        return response;
+    }
 
+    @Override
+    public String addProduct(ProductRequest productRequest) {
+        log.info("ProductServiceImpl | addProduct is called");
+        Inventory inventory = Inventory.builder().quantity(productRequest.getQuantity()).build();
         Product product
                 = Product.builder()
                 .productName(productRequest.getName())
-                .productPrice(productRequest.getPrice())
-                .discountPrice(productRequest.getDiscountPrice())
+                .productPrice(productRequest.getProductPrice())
+                .discountPrice(productRequest.getDiscountPrice()).description(productRequest.getDescription())
+                .inventory(inventory)
                 .build();
         product = productRepository.save(product);
-        Inventory inventory = Inventory.builder().quantity(productRequest.getQuantity())
-                .productId(product.getProductId()).build();
-        inventoryRepository.save(inventory);
 
         log.info("ProductServiceImpl | addProduct | Product Created");
         log.info("ProductServiceImpl | addProduct | Inventory Created");
-        log.info("ProductServiceImpl | addProduct | Product Id : " + product.getProductId());
-        return product.getProductId();
+        log.info("ProductServiceImpl | addProduct | Product Id : {}", product.getProductId());
+        return "Product Added to Inventory with Id " + product.getProductId();
     }
 
     @Override
@@ -58,54 +71,53 @@ public class ProductServiceImpl implements ProductService {
                 = productRepository.findById(productId)
                 .orElseThrow(
                         () -> new ProductServiceCustomException("Product with given Id not found", ErrorConstants.PRODUCT_NOT_FOUND));
-
-        ProductResponse productResponse
-                = new ProductResponse();
-
-        copyProperties(product, productResponse);
-
-        log.info("ProductServiceImpl | getProductById | productResponse :" + productResponse.toString());
+        ProductResponse productResponse = convertToDto(product);
+        log.info("ProductServiceImpl | getProductById | productResponse :{}", productResponse.toString());
 
         return productResponse;
     }
 
     @Override
-    public void reduceQuantity(long productId, long quantity) {
+    public String updateQuantity(long productId, long quantity) {
 
-        log.info("Reduce Quantity {} for Id: {}", quantity,productId);
+        log.info("Reduce Quantity {} for Id: {}", quantity, productId);
 
-        Product product
-                = productRepository.findById(productId)
+        Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ProductServiceCustomException(
                         "Product with given Id not found",
                         "PRODUCT_NOT_FOUND"
                 ));
-        Inventory inv = inventoryRepository.findByProductId(product.getProductId());
+        Inventory inventory = product.getInventory();
 
-        if(inv.getQuantity() < quantity) {
+        if (quantity < 0 && inventory.getQuantity() < quantity) {
             throw new ProductServiceCustomException(
                     "Product does not have sufficient Quantity",
                     "INSUFFICIENT_QUANTITY"
             );
         }
-
-        inv.setQuantity(inv.getQuantity() - quantity);
+        inventory.setQuantity(inventory.getQuantity() + quantity);
         productRepository.save(product);
         log.info("Product Quantity updated Successfully");
+        return "Product Quantity updated Successfully";
     }
 
     @Override
     public void deleteProductById(long productId) {
         log.info("Product id: {}", productId);
-
-        if (!productRepository.existsById(productId)) {
-            log.info("Im in this loop {}", !productRepository.existsById(productId));
+        boolean exists = productRepository.existsById(productId);
+        if (!exists) {
             throw new ProductServiceCustomException(
                     "Product with given with Id: " + productId + " not found:",
-                    "PRODUCT_NOT_FOUND");
+                    ErrorConstants.PRODUCT_NOT_FOUND);
         }
         log.info("Deleting Product with id: {}", productId);
         productRepository.deleteById(productId);
+    }
 
+    private ProductResponse convertToDto(Product db) {
+        ProductResponse to = new ProductResponse();
+        mapper.map(db, to);
+        to.setQuantity(db.getInventory().getQuantity());
+        return to;
     }
 }

@@ -9,7 +9,8 @@ import java.math.BigDecimal;
 @Builder
 public class ProductRequest {
     private String name;
-    private BigDecimal price;
+    private String description;
+    private BigDecimal productPrice;
     private BigDecimal discountPrice;
     private long quantity;
 }

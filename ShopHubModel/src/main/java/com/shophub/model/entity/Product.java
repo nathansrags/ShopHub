@@ -1,13 +1,11 @@
 package com.shophub.model.entity;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -17,7 +15,9 @@ import java.sql.Timestamp;
 @Setter
 @EqualsAndHashCode
 @Builder
-public class Product {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
@@ -34,6 +34,9 @@ public class Product {
 
     @Column(name = "discount_price")
     private BigDecimal discountPrice;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Inventory inventory;
 
     @CreationTimestamp
     @Column(name = "created_date", nullable = false, updatable = false)

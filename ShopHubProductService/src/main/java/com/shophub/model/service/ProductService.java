@@ -1,16 +1,16 @@
 package com.shophub.model.service;
 
-import com.shophub.model.payload.ProductRequest;
-import com.shophub.model.payload.ProductResponse;
+import java.util.List;
 
-public interface ProductService {
+public interface ProductService<R, T> {
 
-    long addProduct(ProductRequest productRequest);
+    List<T> getProducts();
+    String addProduct(R r);
 
-    ProductResponse getProductById(long productId);
+    T getProductById(long productId);
 
-    void reduceQuantity(long productId, long quantity);
+    String updateQuantity(long productId, long quantity);
 
-    public void deleteProductById(long productId);
+    void deleteProductById(long productId);
 }
 
