@@ -5,6 +5,7 @@ import { ProductgallaryService } from '../../../service/product/productgallary.s
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DirectiveModule } from '../../../directive.module';
+import { ProductResponse } from '../../../model/iproductresponse.model';
 
 @Component({
   selector: 'app-product-list',
@@ -43,14 +44,13 @@ export class ProductListComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.products.length);
-    // this.sub = this.productService.getProducts(this.category,9,0).subscribe({
-    //   next: products => {
-    //     this.products = products as Product [];
-    //     this.filteredProducts = this.products;
-    //   },
-    //   error: err => this.errorMessage = err
-    // });
+    
+     this.sub = this.productService.getProducts().subscribe((data) =>{
+      const res = data as ProductResponse;
+      this.products = res.products;
+     })
+       
+     
   }
 
   ngOnDestroy(): void {

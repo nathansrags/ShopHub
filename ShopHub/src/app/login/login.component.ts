@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   profile!: Customer ;
   apiResponse !: ApiResponse;
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.authService.logOut();
     this.regService.successMessage$.subscribe(val => {
       this.loginMessage = val;
@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
       this.errorMessage = val;
     })
     this.spin.hide();
+    console.log('In Login Component')
   }
 
   register() {
@@ -50,8 +51,7 @@ export class LoginComponent implements OnInit {
     this.show = !this.show;
   }
 
-  onSubmit() {
-    debugger;
+  onSubmit() {    
     this.profile = new Customer();
     this.profile.email = this.form.email;
     this.profile.password = this.form.password;
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
       if (this.apiResponse.statusCode == "OK") {
         this.authService.registrationSuccessfullLogin(this.profile);
         this.authService.setUserProfile(this.apiResponse.data as Customer);
-        this.authService.setUserId(this.apiResponse.data as Customer);
+        this.authService.setUserId(this.apiResponse.data as Customer);        
         isAuthenticated = true;
         this.router.navigate(['/home']);
       } else {        

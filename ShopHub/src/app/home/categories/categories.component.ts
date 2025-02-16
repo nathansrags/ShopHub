@@ -36,7 +36,7 @@ export class CategoriesComponent {
 
 
   getProducts(category: string, limit: number, skip: number) {
-    this.productGService.getProducts(category, limit, skip).subscribe((data) => {
+    this.productGService.getProductsByCategory(category, limit, skip).subscribe((data) => {
       const res = data as ProductResponse
       this.products = res.products;
     })

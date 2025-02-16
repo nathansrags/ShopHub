@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-3">
         <i class="fa fa-fw  fa-user-circle-o" aria-hidden="true">
-            <a *ngIf="!isLoggedIn" class="user-panel-link" routerLink="/login" title="Login" role="button">Login</a>
+            <a *ngIf="!isLoggedIn" class="user-panel-link" (click)="handleLogout()" title="Login" role="button">Login</a>
         </i>
         <button *ngIf="isLoggedIn" mat-button [matMenuTriggerFor]="menu" class="login-font">
             <div>
@@ -16,7 +16,7 @@
         <mat-menu #menu>
             <button mat-menu-item routerLink="/userprofile"> User Profile</button>
             <button mat-menu-item routerLink="/notification"> Notification</button>
-            <button mat-menu-item routerLink="/logout">Logout</button>
+            <button mat-menu-item (click)="handleLogout()">Logout</button>
         </mat-menu>
         <!-- <a routerLink="/login" class="user-panel-link" href="#" title="Login" role="button">Login</a> &nbsp; & -->
         <!-- <a routerLink="/register" class="user-panel-link" href="#" title="Sign Up" role="button">&nbsp;Sign up</a> -->

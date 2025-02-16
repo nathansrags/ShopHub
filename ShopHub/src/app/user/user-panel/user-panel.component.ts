@@ -18,13 +18,14 @@ export class UserPanelComponent {
   @Input() username!: string;
   @Input() cartTotal!: number;
   isLoggedIn: boolean = false;
-  profile !: Customer;
+  profile !: Customer;  
 
-  constructor(private authService: AuthService, private router: Router, private spinner: NgxSpinnerService) {
+  constructor(private authService: AuthService, private router: Router, private spin: NgxSpinnerService) {
+    this.authService.getLoggedInName.subscribe(name => {
+      console.log(name);
+      this.isLoggedIn =true;      
 
-  }
-
-  ngOnInit() {
+    });
     this.authService.isUserLoggedIn().subscribe(isin => {
       console.log(isin)
       this.isLoggedIn = isin;
@@ -34,15 +35,17 @@ export class UserPanelComponent {
     });
   }
 
-  showSpinner() {
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 3000)
+  ngOnInit() {
+    this.authService.isUserLoggedIn().subscribe(isin => {
+      console.log(isin)
+      this.isLoggedIn = isin;
+    });
+    
   }
+  
 
-  handleLogout() {
-    this.showSpinner();
+  handleLogout() {    
+    this.isLoggedIn =false;
     this.authService.logOut();
     this.router.navigate(['/logout']);
   }

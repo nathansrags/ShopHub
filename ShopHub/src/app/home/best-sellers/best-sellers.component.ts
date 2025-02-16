@@ -27,7 +27,7 @@ export class BestSellersComponent {
   }
 
   getProducts(category: string) {
-    this.productGService.getProducts(category,0, 0).subscribe((data) => {
+    this.productGService.getProductsByCategory(category,0, 0).subscribe((data) => {
       const res = data as ProductResponse
       const products = res.products;
       for (let index = 0; index < products.length; index++) {

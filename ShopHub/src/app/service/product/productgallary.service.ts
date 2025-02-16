@@ -8,10 +8,15 @@ export class ProductgallaryService {
 
   private url = 'https://dummyjson.com/';
   private category_url = this.url + 'products/category/';
+  private products_url = this.url +'products';
   constructor(private http: HttpClient) { }
 
-  public getProducts(category: string, limit: number, skip: number) {
+  public getProductsByCategory(category: string, limit: number, skip: number) {
     return this.http.get(this.category_url + category + '?limit=' + limit);
+  }
+
+  public getProducts(){
+    return this.http.get(this.products_url);
   }
   private category_list = 'https://dummyjson.com/products/category-list';
 

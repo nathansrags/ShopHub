@@ -6,6 +6,7 @@ import { RecoverComponent } from './user/recover/recover.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { CategoriesComponent } from './home/categories/categories.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { ProductListComponent } from './home/categories/product-list/product-list.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,11 +17,13 @@ export const routes: Routes = [
   { path: 'recover', component: RecoverComponent },
   { path: 'category', component: CategoriesComponent},
   { path: 'category/:category', component:CategoriesComponent, pathMatch: 'full'},
-  { path: 'product/:id', component: ProductDetailComponent, pathMatch: 'full'}
+  { path: 'product/:id', component: ProductDetailComponent, pathMatch: 'full'},
+  { path: 'prodList', component: ProductListComponent},
+  { path: 'shopping', component: DashboardComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

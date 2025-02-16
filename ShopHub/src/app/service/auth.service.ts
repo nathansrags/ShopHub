@@ -53,6 +53,7 @@ export class AuthService {
 
   public getLoggedInUserName(): Observable<string> {
     let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE);
+    console.log('getLoggdinusername auth service');
     if (user != null) {
       let p: Customer = JSON.parse(user);
       this._loginUserName$.next(p.firstName);
@@ -80,11 +81,12 @@ export class AuthService {
   }
 
   setLoginSuccess(val: boolean) {
-    this._loginSuccess$.next(val);
+    this._loginSuccess$.next(val);    
   }
 
   setUserProfile(profile: Customer) {
     this._loginProfile$.next(profile);
+    this.getLoggedInName.emit(profile.firstName);
   }
 
   setUserId(profile: Customer) {

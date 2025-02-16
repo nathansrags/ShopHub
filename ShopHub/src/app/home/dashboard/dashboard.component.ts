@@ -4,6 +4,7 @@ import { ImageSliderComponent } from "../image-slider/image-slider.component";
 import { TopCategoryService } from '../../service/product/top-category.service';
 import { HomeImageSliderService } from '../../service/product/home-image-slider.service';
 import { BestSellersComponent } from "../best-sellers/best-sellers.component";
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -15,13 +16,14 @@ export class DashboardComponent {
 
   catoryList: Categories[] = [];
   slides: Categories[] = [];
-  constructor(private sliderService: HomeImageSliderService, private categoryService: TopCategoryService) {
+  constructor(private sliderService: HomeImageSliderService, private categoryService: TopCategoryService,private spin: NgxSpinnerService) {
 
   }
 
   ngOnInit(): void {
     this.loadSlides();
     this.loadCategories();
+    this.spin.hide();
   }
 
   async loadModules(){
@@ -31,8 +33,7 @@ export class DashboardComponent {
   async loadSlides() {
     this.sliderService.getSlides().subscribe((data) => {
       const categoryData = data as Categories[];
-      this.slides = categoryData;
-      console.log(this.slides.length);
+      this.slides = categoryData;      
     });
   }
 
@@ -40,7 +41,6 @@ export class DashboardComponent {
     this.categoryService.getCategories().subscribe((data) => {
       const categoryData = data as Categories[];
       this.catoryList = categoryData;
-      console.log(this.catoryList.length);
     })
   }
 }

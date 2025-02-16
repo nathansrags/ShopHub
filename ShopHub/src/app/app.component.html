@@ -301,6 +301,8 @@
 
 <!-- Toolbar -->
 <div class="container-fluid">
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-spin-clockwise-fade" 
+      [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
   <div class="row">
     <mat-toolbar class="toolbar" role="banner">
       <div class="col-sm-2">
@@ -308,7 +310,7 @@
       </div>
       <span class="fill-remaining-space"></span>
       <div class="col-sm-6">
-        <div *ngIf="!isLoggedIn">
+        <div *ngIf="isLoggedIn">
           <div class="input-group w-100">
             <input type="text" class="form-control" placeholder="Search for products">
             <div class="input-group-append">
@@ -336,7 +338,7 @@
   <!-- Footer -->
   <div class="footer">
     <span class="float-start"><b>Developed by:</b><i> Gopinathan</i></span>
-    <span class="float-end"><b>Location: Tamilnadu Chennai CDC</b></span>
+    <span class="float-end"><b>Location: Tamilnadu Chennai </b></span>
   </div>
   <svg id="clouds" alt="Gray Clouds Background" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677"
     viewBox="0 0 2611.084 485.677">
