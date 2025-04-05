@@ -15,7 +15,8 @@
             </div>
         </div>
         <div class='table-responsive'>
-            <table class='table' *ngIf="!!products?.length">
+            <table datatable [dtOptions]="dtOptions" class="row-border hover"></table>
+            <table class='table' *ngIf="!!products?.length" id="productList">
                 <thead>
                     <tr>
                         <th>Image

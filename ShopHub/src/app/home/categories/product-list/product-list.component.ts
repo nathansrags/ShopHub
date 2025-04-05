@@ -6,11 +6,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DirectiveModule } from '../../../directive.module';
 import { ProductResponse } from '../../../model/iproductresponse.model';
+import { DataTablesModule  } from 'angular-datatables';
+import { Config } from 'datatables.net';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, DirectiveModule],
+  imports: [CommonModule, RouterModule, DirectiveModule, DataTablesModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
@@ -18,6 +20,7 @@ export class ProductListComponent {
   pageTitle = 'Product List';
   imageWidth = 50;
   imageMargin = 2;
+  dtOptions:Config = {};
   
   errorMessage = '';
   sub!: Subscription;

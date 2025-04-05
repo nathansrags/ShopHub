@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.shophub.manage.user</groupId>
 	<artifactId>ShopHubUserService</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>ShopHubUserService</name>
 	<description>Shophub User management service</description>
 	<url/>

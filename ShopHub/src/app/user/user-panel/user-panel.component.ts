@@ -21,11 +21,7 @@ export class UserPanelComponent {
   profile !: Customer;  
 
   constructor(private authService: AuthService, private router: Router, private spin: NgxSpinnerService) {
-    this.authService.getLoggedInName.subscribe(name => {
-      console.log(name);
-      this.isLoggedIn =true;      
-
-    });
+    
     this.authService.isUserLoggedIn().subscribe(isin => {
       console.log(isin)
       this.isLoggedIn = isin;
@@ -36,6 +32,12 @@ export class UserPanelComponent {
   }
 
   ngOnInit() {
+    this.authService.getLoggedInName.subscribe(name => {
+      console.log(name);
+      this.isLoggedIn =true;
+      this.username = name;      
+
+    });
     this.authService.isUserLoggedIn().subscribe(isin => {
       console.log(isin)
       this.isLoggedIn = isin;
