@@ -1,0 +1,17 @@
+<div class="row">    
+    <ul class="nav nav-tabs main-menu" id="myTab" role="tablist">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+             [class.active]="product.isActive || customer.isActive || shopping.isActive" aria-expanded="false">Manage
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item nav-link" routerLink="/prodList" routerLinkActive="active"
+                    #product="routerLinkActive" routerLinkRoutingOption="{exact:true}">Product</a></li>
+                <li><a class="dropdown-item nav-link" routerLink="/empList" routerLinkActive="active"
+                    #customer="routerLinkActive" routerLinkRoutingOption="{exact:true}">Customer</a></li>
+                <li><a class="dropdown-item nav-link" routerLink="/shopping" routerLinkActive="active"
+                    #shopping="routerLinkActive" routerLinkRoutingOption="{exact:true}">Shopping</a></li>
+            </ul>
+        </li>
+    </ul>    
+</div>

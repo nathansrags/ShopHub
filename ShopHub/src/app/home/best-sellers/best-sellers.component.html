@@ -1,0 +1,13 @@
+<div class="d-flex d-inline-flex bestsell-wrapper ">
+    <div class="best-sells boxing">
+        <h4 class="d-inline mx-2">Best Deals on {{category}}</h4>
+        <a [routerLink]="['/category/', category]" class="float-end text-decoration-none" role="button">
+            <i class="fa fa-arrow-circle-right d-inline float-end mx-2" style="font-size: 40px;" role="button">
+            </i></a>
+        <ng-image-slider #nav [images]="imageObject" [infinite]="false" [autoSlide]="1"
+            [imageSize]="{height: 200}" slideImage="1"></ng-image-slider>
+    </div>
+    <div *ngIf="isBestDeal" class="best-sell boxing"></div>
+
+</div>
+<div class="vspace"></div>

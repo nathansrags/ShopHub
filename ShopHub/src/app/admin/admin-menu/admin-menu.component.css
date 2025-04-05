@@ -1,0 +1,7 @@
+.nav-link:active{
+    color: #fff;
+    background-color: #1976d2;
+}
+.main-menu{
+    padding-left: 20%;
+}

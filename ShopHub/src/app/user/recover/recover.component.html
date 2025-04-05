@@ -1,0 +1,76 @@
+<div class="row py-2">
+    <div class="col-md-3 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h3>Reset Password</h3>
+            </div>
+            <div class="card-body">
+                <div *ngIf="successMessage" class="alert alert-success" role="alert">
+                    {{successMessage}}
+                </div>
+                <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+                    {{errorMessage}}
+                </div>
+                <div class="form-group form-inline">
+                    <form name="recoverForm" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
+                        [appMatchPassword]="['password', 'confirmpassword']">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" title="Email"><i class="fa fa-user"></i></span>
+                            <input class="form-control" name="email" [(ngModel)]="form.email" minlength="4"
+                                maxlength="30" required #email="ngModel" autocomplete="off" placeholder="Enter Email" appEmailValidator>
+                        </div>
+                        <small *ngIf="(email.touched || f.submitted) && email.errors?.['required']" class="text-danger">
+                            Email is required
+                        </small>                        
+                        <small *ngIf="email.errors?.['invalidEmail']" class="text-danger">Enter a valid Email</small>
+                        <div class="input-group form-group mb-3">
+                            <span class="input-group-text" title="Password"><i class="fa fa-lock"></i></span>
+                            <input [type]="show? 'text':'password'" class="form-control" name="password"
+                                [(ngModel)]="form.password" maxlength="20" required #password="ngModel" maxlength="15"
+                                autocomplete="off" placeholder="New Password" appPasswordPattern>
+                            <span class="input-group-text" (click)="togglePassword('pass')" role="button">
+                                <i [class]="show? 'fa fa-eye': 'fa fa-eye-slash'" class="float-end"
+                                     style="display: inline-block;"></i>
+                            </span>
+                        </div>
+                        <div class="input-group form-group">
+                            <span *ngIf="(password.touched ||f.submitted) && password.errors?.['required']"
+                                class="text-danger">Password is required</span>
+                            <small *ngIf="password.errors?.['maxlength']" class="text-danger">Password cannot be more than
+                                15 character</small>
+                            <small *ngIf="password.errors?.['invalidPassword']" class="text-danger">Password should be 8 character with 1 cap letter, 1 special character</small>
+                        </div>
+                        <div class="input-group form-group">
+                            <span class="input-group-text" title="Confirm Password"><i class="fa fa-lock"></i></span>
+                            <input [type]="showC? 'text':'password'" class="form-control" name="confirmpassword"
+                                [(ngModel)]="form.confirmpassword" maxlength="15" required #confirmpassword="ngModel"
+                                maxlength="15" autocomplete="off" placeholder="Confirm Password">
+                            <span class="input-group-text" (click)="togglePassword('cpass')" role="button">
+                                <i [class]="showC? 'fa fa-eye': 'fa fa-eye-slash'" class="float-end"
+                                     style="display: inline-block;" ></i>
+                            </span>
+                        </div>
+                        <div class="input-group form-group">
+                            <small *ngIf="(confirmpassword.touched ||f.submitted) && confirmpassword.errors?.['required']"
+                                class="text-danger">Password is required</small>
+                            <small *ngIf="confirmpassword.errors?.['maxlength']" class="text-danger">Password cannot be more than
+                                15 character</small>
+                            <small *ngIf="confirmpassword.errors?.['invalidPassword']" class="text-danger">Password should be 8 character with 1 cap letter, 1 special character</small>
+                            <small *ngIf="f.errors?.['passwordMismatch']" class="text-danger">Password and Confirm password do not match</small>
+                        </div>
+                        <div class="mx-auto py-3">
+                        </div>
+                        <div class="form-group mx-auto">
+                            <button type="button" class="float-start btn btn-failure"
+                                (click)="goBack()">Cancel</button>
+                            <button type="submit" class="float-end btn btn-success" ng-disabled="f.form.$invalid"
+                                (ngSubmit)="onSubmit()">Reset</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="text-center">Don't have an account? <a routerLink="/register" class="text-decoration-none">Sign
+                up</a> </div>
+    </div>

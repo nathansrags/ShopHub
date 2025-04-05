@@ -1,0 +1,49 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/ShoppingServer/eureka/}
+      register-with-eureka: true
+      fetch-registry: true
+  instance:
+    prefer-ip-address: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health, info"      
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: AuthenticationService
+          uri: lb://LOGIN-API
+          predicates:
+            - Path=/authenticate/**
+        - id: ProductService
+          uri: lb://PRODUCT-API
+          predicates:
+            - Path=/products/**
+        - id: CustomerService
+          uri: lb://CUSTOMER-API
+          predicates:
+            - Path=/customer/**
+        - id: ShopHubBackend
+          uri: lb://SHOPHUB-API
+          predicates:
+            - Path=/shophub/**
+        - id: ImageService
+          uri: lb://IMAGESERVICE
+          predicates:
+            - Path=/images/**
+      default-filters:
+      -  DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+              allowedHeaders: "*"

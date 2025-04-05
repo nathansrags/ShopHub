@@ -1,0 +1,29 @@
+<div class="container-fluid" style="background-color: rgb(241, 242, 244);">    
+    <div class="row top-banner boxing">
+        <div class="categories d-flex d-inline-flex p-2">
+            <div *ngFor="let category of catoryList" class="fashion-logo flex-column">                
+                <img class="category-image" alt="{{category.name}}" src="{{category.url}}">
+                <div class="py-2 bd-highlight hide-on-small-only">{{category.name}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="vspace"></div>
+    <div class="row boxing">
+        <app-image-slider [indicatorsVisible]="false" [animationSpeed]="100"  [autoPlay]="true"
+            [autoPlaySpeed]="10000"></app-image-slider>
+    </div>
+    <div class="vspace"></div>
+    <div class="row">
+        <app-best-sellers category="mens-watches" hasBestDeal="true"></app-best-sellers>
+    </div>
+    <div class="vspace"></div>
+    <div class="row">
+        <app-best-sellers category="smartphones"></app-best-sellers>
+    </div>
+    <div class="row">
+        <app-best-sellers category="groceries"></app-best-sellers>
+    </div>
+    <div class="row">
+        <app-best-sellers category="furniture"></app-best-sellers>
+    </div>
+</div>

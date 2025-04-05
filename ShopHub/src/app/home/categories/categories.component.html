@@ -1,0 +1,208 @@
+<!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg">
+    <div class="container">
+
+    </div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION INTRO END// ========================= -->
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+        <div class="row">
+            <aside class="col-md-3 sidebar">
+                <div class="card">
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#collapse_1" data-bs-toggle="collapse" data-bs-target="#collapse_1"
+                                aria-expanded="true" class="">
+                                <h6 class="title"> <i class="icon-control fa fa-fw fa-chevron-down"></i>Product type
+                                </h6>
+                            </a>
+                        </header>
+                        <div class="filter-content collapse show" id="collapse_1" style="">
+                            <div class="card-body">
+                                <form class="pb-3">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-light" type="button"><i
+                                                    class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <ul class="list-menu">
+                                    <li *ngFor="let category of category_list">
+                                        <a [routerLink]="['/category/', category]" role="button">{{category}}</a>
+                                    </li>
+                                </ul>
+
+                            </div> <!-- card-body.// -->
+                        </div>
+                    </article> <!-- filter-group  .// -->
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#collapse_2" data-bs-toggle="collapse" data-bs-target="#collapse_2"
+                                aria-expanded="false" class="">
+                                <h6 class="title"> <i class="icon-control fa fa-fw fa-chevron-down"></i>Brands </h6>
+                            </a>
+                        </header>
+                        <div class="filter-content collapse in" id="collapse_2">
+                            <div class="card-body">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" checked="" class="custom-control-input">
+                                    <div class="custom-control-label">Mercedes
+                                        <b class="badge badge-pill badge-light float-right">120</b>
+                                    </div>
+                                </label>
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" checked="" class="custom-control-input">
+                                    <div class="custom-control-label">Toyota
+                                        <b class="badge badge-pill badge-light float-right">15</b>
+                                    </div>
+                                </label>
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" checked="" class="custom-control-input">
+                                    <div class="custom-control-label">Mitsubishi
+                                        <b class="badge badge-pill badge-light float-right">35</b>
+                                    </div>
+                                </label>
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" checked="" class="custom-control-input">
+                                    <div class="custom-control-label">Nissan
+                                        <b class="badge badge-pill badge-light float-right">89</b>
+                                    </div>
+                                </label>
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input">
+                                    <div class="custom-control-label">Honda
+                                        <b class="badge badge-pill badge-light float-right">30</b>
+                                    </div>
+                                </label>
+                            </div> <!-- card-body.// -->
+                        </div>
+                    </article> <!-- filter-group .// -->
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#collapse_3" data-bs-toggle="collapse" data-bs-target="#collapse_3"
+                                aria-expanded="false" class="">
+                                <h6 class="title"><i class="icon-control fa fa-fw fa-chevron-down"></i>Price range </h6>
+                            </a>
+                        </header>
+                        <div class="filter-content collapse in" id="collapse_3" style="">
+                            <div class="card-body">
+                                <input type="range" class="custom-range" min="0" max="100" name="">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Min</label>
+                                        <input class="form-control" placeholder="$0" type="number">
+                                    </div>
+                                    <div class="form-group text-right col-md-6">
+                                        <label>Max</label>
+                                        <input class="form-control" placeholder="$1,0000" type="number">
+                                    </div>
+                                </div> <!-- form-row.// -->
+                                <button class="btn btn-block btn-primary">Apply</button>
+                            </div><!-- card-body.// -->
+                        </div>
+                    </article> <!-- filter-group .// -->
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#collapse_4" data-bs-toggle="collapse" data-bs-target="#collapse_4"
+                                aria-expanded="false" class="">
+                                <h6 class="title"><i class="icon-control fa fa-fw fa-chevron-down"></i>Sizes </h6>
+                            </a>
+                        </header>
+                        <div class="filter-content collapse in" id="collapse_4">
+                            <div class="card-body">
+                                <label class="checkbox-btn">
+                                    <input type="checkbox">
+                                    <span class="btn btn-light"> XS </span>
+                                </label>
+
+                                <label class="checkbox-btn">
+                                    <input type="checkbox">
+                                    <span class="btn btn-light"> SM </span>
+                                </label>
+
+                                <label class="checkbox-btn">
+                                    <input type="checkbox">
+                                    <span class="btn btn-light"> LG </span>
+                                </label>
+
+                                <label class="checkbox-btn">
+                                    <input type="checkbox">
+                                    <span class="btn btn-light"> XXL </span>
+                                </label>
+                            </div><!-- card-body.// -->
+                        </div>
+                    </article> <!-- filter-group .// -->
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#collapse_5" data-bs-toggle="collapse" data-bs-target="#collapse_5"
+                                aria-expanded="false" class="">
+                                <h6 class="title"><i class="icon-control fa fa-fw fa-chevron-down"></i>More filter </h6>
+                            </a>
+                        </header>
+                        <div class="filter-content collapse in" id="collapse_5" style="">
+                            <div class="card-body">
+                                <label class="custom-control custom-radio">
+                                    <input type="radio" name="myfilter_radio" checked="" class="custom-control-input">
+                                    <div class="custom-control-label">Any condition</div>
+                                </label>
+
+                                <label class="custom-control custom-radio">
+                                    <input type="radio" name="myfilter_radio" class="custom-control-input">
+                                    <div class="custom-control-label">Brand new </div>
+                                </label>
+
+                                <label class="custom-control custom-radio">
+                                    <input type="radio" name="myfilter_radio" class="custom-control-input">
+                                    <div class="custom-control-label">Used items</div>
+                                </label>
+
+                                <label class="custom-control custom-radio">
+                                    <input type="radio" name="myfilter_radio" class="custom-control-input">
+                                    <div class="custom-control-label">Very old</div>
+                                </label>
+                            </div><!-- card-body.// -->
+                        </div>
+                    </article> <!-- filter-group .// -->
+                </div> <!-- card.// -->
+
+            </aside> <!-- col.// -->
+            <main class="col-md-9">
+                <a routerLink="/home" class="user-panel-link" role="button">Home</a>&nbsp;&nbsp;>
+                <a [routerLink]="['/category/', category]" role="button">{{category}}</a>
+                <header class="border-bottom mb-2 pb-2">
+                    <div class="form-inline">
+                        <span class="mr-md-auto">{{products.length}} Items found </span>
+                        <select class="mr-2 form-control">
+                            <option>Latest items</option>
+                            <option>Trending</option>
+                            <option>Most Popular</option>
+                            <option>Cheapest</option>
+                        </select>
+                        <div class="btn-group">
+                            <button class="btn btn-outline-secondary" type="button"  data-toggle="tooltip"
+                            title="Grid view" (click)="onDisplayModeChange(1)"
+                                [ngClass]="{'btn-primary active': displayMode === 1}">
+                                <i class="fa fa-th"></i>
+                            </button>
+                            <button class="btn btn-outline-secondary" type="button" data-toggle="tooltip" title="List view" (click)="onDisplayModeChange(2)"
+                                [ngClass]="{'btn-primary active': displayMode === 2}">
+                                <i class="fa fa-bars"></i>
+                            </button>                                
+                        </div>
+                    </div>
+                </header><!-- sect-heading -->
+                <app-product-grid *ngIf="displayMode === 1" [products]="products"></app-product-grid>
+                <app-product-list *ngIf="displayMode === 2" [products]="products" [category]="category"></app-product-list>
+            </main> <!-- col.// -->
+
+        </div>
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

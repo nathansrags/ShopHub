@@ -1,0 +1,204 @@
+/* You can add global styles to this file, and also import other style files */
+.mg-top-10{
+    margin-top: 10px;
+}
+
+.error{
+    color: red;
+}
+
+.success{
+    color: green;
+}
+
+.notification-theme{
+    background-color: #ffc107;
+}
+
+h1, h2, h3, h4, h5, h6{ margin: 8px 0;}
+p{ margin: 0;}
+.spacer{flex: 1;}
+h1{margin-bottom: 0;}
+.green-text{ color: #45a049;}
+nav a{
+    padding: 1rem;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #e8e8e8 !important;
+    color: #3d3d3d !important;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+nav a:hover{
+    color: white !important;
+    background-color: #42545C !important;
+}
+
+nav a:active{
+    background-color: black !important;
+    color: #ffffff !important;
+}
+
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.searchText{
+    padding: 12px;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    resize: vertical;
+}
+.hide{
+    display: none;
+}
+.top-buffer{
+    margin-top: 10px;
+}
+.medium-button{
+    background-color: #1976d2;
+    color: wheat;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.medium-button:hover{
+    background-color: #45a049;
+}
+
+.medium-actionbutton{
+    background-color: #1976d2;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.table-wrapper-scroll-y{
+    display: block;
+    margin-top: 10px;
+    position: relative;
+    height: 400px;
+    overflow: auto;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    padding-top: 60px;
+}
+html{
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container{
+    width: 1150px;
+    margin: 0px auto;
+    display: block;
+}
+
+.search-textbox{
+    padding-left: 16px;
+    height: 40px;
+    width: 90%;
+    border: 1px solid white;
+    float: left;
+    border-radius: unset;
+}
+.search-button{
+    height: 40px;
+    width: 55px;
+    border: none;
+    background: #ffffff;
+    float: left;
+    color: #f13f31;
+}
+
+.search-button i{    
+    color: #f13f31;
+}
+
+.cart-sect{
+    list-style: none;
+}
+
+.cart-sect li{
+    float: left;
+    padding: 0 5px 0 5 px;
+}
+
+.cart-sect li a{
+    padding-left: 3px;
+    font-size: 14px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.cart-sect li i{
+    font-size: 14px;
+    color: #ffffff;
+}
+
+app-viewcart{
+    padding-bottom: 20px;
+}
+.offer-text{
+    color: #ffc107;
+    font-weight: 500;
+}
+.star-rating{
+    padding: 2px 7px;
+    border-radius: 12px;
+    font-size: 12px;
+    background-color: #26a541;
+    vertical-align: baseline;
+    margin: 0 10px 0 0;
+    color: white;
+}
+.footer{
+    background-color: #1976d2;
+    width: 100%;    
+    color: #ffffff;
+    position: fixed;
+    height: auto;    
+    margin: auto;
+    bottom: 0;
+    align-items: center;
+}
+.vspace{
+    height: 1rem;
+}
+
+
+.price{
+    font-weight: 300;    
+}
+.price-old{
+    font-weight: 400;
+    font-style: italic;    
+}
+.price-discount{
+    font-weight: 300;       
+    color: green;
+}
+.star-rating{
+    line-height: normal;
+    display: inline-block;
+    color: #fff;
+    padding: 2px 4px 2px 6px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 12px;
+    vertical-align: middle;
+    background-color: #388e3c
+}
+

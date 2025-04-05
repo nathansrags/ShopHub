@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Top Offers",
+        "url": "/assets/images/dashboard/slider/b1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Electronics",
+        "url": "/assets/images/dashboard/slider/b2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Fashion",
+        "url": "/assets/images/dashboard/slider/b3.jpg"
+    }
+]
