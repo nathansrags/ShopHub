@@ -113,6 +113,7 @@
 	</dependencyManagement>
 
 	<build>
+		<finalName>ShopHubUserService.jar</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

@@ -1,4 +1,4 @@
 FROM openjdk:17-oracle
 ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
+COPY ${JAR_FILE} ShopHubUserService.jar
 ENTRYPOINT ["java", "-jar", "/ShopHubUserService.jar"]
