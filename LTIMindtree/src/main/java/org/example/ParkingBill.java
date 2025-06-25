@@ -9,7 +9,7 @@ public class ParkingBill {
     public static void main(String[] args) {
         ParkingBill pb = new ParkingBill();
         String entry = "9:00";
-        String exit = "13:21";
+        String exit = "10:21";
         int bill = pb.solution(entry, exit);
         System.out.println("$ " + bill + ".00");
     }
@@ -24,7 +24,7 @@ public class ParkingBill {
             long difference = exitTime.getTime() - entryTime.getTime();
             long hours = difference / MILL_PER_HOUR;
             long minutes = (difference / MILL_PER_MINUTE) % 60;
-            System.out.println("Hours = "+ hours + " minutes ="+ minutes);
+            System.out.println(hours + " Hour " + minutes + " minutes");
             return calculateBill(hours, minutes);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -38,7 +38,7 @@ public class ParkingBill {
         final int SUC_HOURS = 4;
 
         int bill = 0;
-        if (hours > 1) {
+        if (hours > 0) {
             bill = (int) (ENTRANCE_FEE + FIRST_HOUR + ((hours - 1) * SUC_HOURS));
         }
         if (mins > 0) {

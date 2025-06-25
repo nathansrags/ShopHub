@@ -6,7 +6,8 @@ import java.util.*;
 public class GeonomicRangeQuery {
     public static void main(String[] args) {
         GeonomicRangeQuery grq = new GeonomicRangeQuery();
-        grq.solution("CAGCCTA", new int[]{2, 5, 6}, new int[]{4, 5, 6});
+        final String S = "CAGCCTA";
+        grq.solution(S, new int[]{2, 5, 6}, new int[]{4, 5, 6});
     }
 
     private int[] solution(String s, int[] p, int[] q) {
@@ -33,7 +34,7 @@ public class GeonomicRangeQuery {
                     groups[j] = impactMap.get(c);
                 }
                 OptionalInt minFactor = Arrays.stream(groups).sorted().filter(e -> e > 0).findFirst();
-                resultList.add(minFactor.getAsInt());
+                minFactor.ifPresent(resultList::add);
             }
             System.out.println(resultList);
         }
