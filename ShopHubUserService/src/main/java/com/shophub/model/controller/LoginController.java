@@ -1,15 +1,16 @@
 package com.shophub.model.controller;
 
-import com.shophub.model.constants.ApiConstants;
-import com.shophub.model.service.ILoginService;
 import com.shophub.model.dto.CustomerTo;
 import com.shophub.model.entity.Customer;
 import com.shophub.model.exception.RecordNotFoundException;
+import com.shophub.model.service.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -20,6 +21,7 @@ public class LoginController {
     private ILoginService<CustomerTo, Customer> loginService;
 
     @GetMapping(value = "/{id}")
+    @Transactional
     public ResponseEntity<CustomerTo> get(@PathVariable Long id) {
         try {
             final CustomerTo response = loginService.find(id);
@@ -29,13 +31,13 @@ public class LoginController {
         }
     }
 
-    @GetMapping(produces = ApiConstants.JSON_TYPE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CustomerTo>> getAll() {
         final List<CustomerTo> response = loginService.findAll();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping(produces = ApiConstants.JSON_TYPE)
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CustomerTo> add(@RequestBody CustomerTo to) {
         final CustomerTo response = loginService.save(to);
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -52,7 +54,7 @@ public class LoginController {
         }
     }
 
-    @PutMapping(produces = ApiConstants.JSON_TYPE)
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CustomerTo> update(@RequestBody CustomerTo to) {
         try {
             final CustomerTo response = loginService.update(to);

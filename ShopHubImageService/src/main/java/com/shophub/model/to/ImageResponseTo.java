@@ -13,6 +13,6 @@ public class ImageResponseTo {
 	
 	private int statusCode;
 	private String message;
-	private Object data;
+	private String image;
 
 }
